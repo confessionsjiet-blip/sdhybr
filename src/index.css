@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════
+   JIET CONFESSIONS — DARK EDITORIAL UNDERGROUND
+   ═══════════════════════════════════════════════════ */
+
+@theme {
+  --color-ink-black: #080808;
+  --color-card-black: #0F0F0F;
+  --color-nav-black: #0A0A0A;
+  --color-crimson: #C0392B;
+  --color-crimson-dark: #962D23;
+  --color-crimson-glow: #E74C3C;
+  --color-gold: #C9A84C;
+  --color-gold-dim: #8B7535;
+  --color-paper: #E8E0D0;
+  --color-muted: #5A5550;
+  --color-surface: #111111;
+  --color-surface-hover: #1A1A1A;
+
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-syne: "Syne", system-ui, sans-serif;
+  --font-caveat: "Caveat", cursive;
+}
+
+/* ─── Base reset ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-syne);
+  background-color: var(--color-ink-black);
+  color: var(--color-paper);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Grain noise texture overlay ─── */
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ─── Headings ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dim);
+}
+
+/* ─── Custom animations ─── */
+@keyframes pulse-crimson {
+  0%, 100% { border-color: var(--color-crimson); }
+  50% { border-color: var(--color-crimson-glow); }
+}
+
+@keyframes ink-stamp {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.35); }
+  50% { transform: scale(0.9); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-2deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
+}
+
+.animate-pulse-crimson {
+  animation: pulse-crimson 2.5s ease-in-out infinite;
+}
+
+.animate-ink-stamp {
+  animation: ink-stamp 0.4s ease-out;
+}
+
+.animate-wobble:hover {
+  animation: wobble 0.5s ease-in-out;
+}
+
+/* ─── Card paper-clipping inner shadow ─── */
+.card-paper {
+  box-shadow: inset 0 1px 3px rgba(201, 168, 76, 0.06), 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.card-paper:hover {
+  box-shadow: inset 0 1px 3px rgba(201, 168, 76, 0.06), 0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-paper);
+}
+
+/* ─── Links ─── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Textarea/Input resets ─── */
+textarea, input {
+  font-family: var(--font-syne);
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}

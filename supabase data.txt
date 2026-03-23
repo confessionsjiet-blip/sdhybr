@@ -1,0 +1,2 @@
+supabase urL :https://mhslmnzqhrtzwvatbxgs.supabase.co
+supabase key: sb_publishable_kpCLo-eikMDIWlj5E9EVWQ_jO9cj-9-
